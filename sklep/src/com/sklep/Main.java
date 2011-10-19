@@ -11,19 +11,16 @@ public class Main {
 		List<Produkt> produkty = new ArrayList<Produkt>();
 		
 	
-		produkty.add(new Produkt("Johnnie Walker Red ", "60"));
-		produkty.add(new Produkt("Sobieski", "39"));
-		produkty.add(new Produkt("Glenfiddich", "220"));
+		produkty.add(new Produkt(ProduktMarks.Johnnie_Walker_Red, "60"));
+		produkty.add(new Produkt(ProduktMarks.Sobieski, "39"));
+		produkty.add(new Produkt(ProduktMarks.Glenfiddich, "220"));
 		Klient p = new Klient("Maciej", "Tomczyk", produkty);
 		p.printProdukty();
-		do {
-			produkty.remove(0);
+		p.removelist();
 
-		} while (produkty.size() != 0);
-
-		produkty.add(new Produkt("Bols Blue", "56"));
-		produkty.add(new Produkt("Sheridans", "66"));
-		produkty.add(new Produkt("Johnnie Walker Blue", "400"));
+		produkty.add(new Produkt(ProduktMarks.Bols_Blue, "56"));
+		produkty.add(new Produkt(ProduktMarks.Sobieski, "66"));
+		produkty.add(new Produkt(ProduktMarks.Johnnie_Walker_Blue, "400"));
 		Klient g = new Klient("Tadeusz", "Tomczyk", produkty);
 		g.printProdukty();
 

@@ -1,10 +1,10 @@
 package com.sklep;
  
 public class Produkt implements iProdukt {
-        public String nazwa;
+        public ProduktMarks nazwa;
         public String cena;
  
-        public Produkt(String nazwa, String cena) {
+        public Produkt(ProduktMarks nazwa, String cena) {
                 this.nazwa = nazwa;
                 this.cena = cena;
         }
