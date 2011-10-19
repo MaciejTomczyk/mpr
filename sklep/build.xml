@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Sklep">
+
+<path id="classpath">
+		<fileset dir="bin" includes="**/*.jar">
+		</fileset>
+		<pathelement location="bin" />
+</path> 
+ 
+ 
+
+	<target name="compile">
+		<mkdir dir="bin"/>
+		<javac srcdir="src" destdir="bin" includeantruntime="false"/> 
+	</target>
+
+
+	<target name="jar">
+			<mkdir dir="bin/jar"/>
+			<jar destfile="bin/jar/Sklep.jar" basedir="bin">
+						<manifest>
+						<attribute name="Main-Class" value="com.sklep.Main"/>
+						</manifest>
+			</jar>
+	</target>
+
+
+
+<target name="run-jar" depends="jar">
+		<java jar="bin/jar/Sklep.jar" fork="true"/>
+</target>
+
+<target name="clean">
+		<delete dir="bin/jar"/>
+</target>
+
+
+<target name="run" depends="compile">
+		<java classname="com.sklep.Main" classpathref="classpath" />
+</target>	
+
+
+</project>
