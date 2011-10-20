@@ -17,7 +17,7 @@ public class Main {
 
 		p.addProdukt(new Produkt("Gorzka", "45"));
 		p.editProdukt("Sobieski", "29"); // edycja ceny
-		p.removeProdukt("Johnnie_Walker_Red");  // usuwanie produktu 
+		p.removeProdukt("Sobieski");  // usuwanie produktu 
 		p.printProdukty();
 		p.clearlist(); //czyszczenie listy
 		

@@ -23,11 +23,10 @@ public class Klient {
         public void removeProdukt(String nazwa) {
         	int pozycja = 0;
         	for (Produkt g : produkty) {
-        	if (g.getNazwa().equals(nazwa)) {
-        	produkty.remove(pozycja);break;
-        	}
-        	}
-        	pozycja++;
+        			if (g.getNazwa().equals(nazwa)) {produkty.remove(pozycja);break;}
+        			pozycja++;
+        					}
+        	
         	}
         
         public void search(String nazwa)
