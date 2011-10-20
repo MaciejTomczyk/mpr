@@ -10,20 +10,30 @@ public class Main {
 
 		List<Produkt> produkty = new ArrayList<Produkt>();
 		
-	
-		produkty.add(new Produkt(ProduktMarks.Johnnie_Walker_Red, "60"));
-		produkty.add(new Produkt(ProduktMarks.Sobieski, "39"));
-		produkty.add(new Produkt(ProduktMarks.Glenfiddich, "220"));
-		Klient p = new Klient("Maciej", "Tomczyk", produkty);
-		p.printProdukty();
-		p.removelist();
+		Klient p = new Klient("Maciej", "Tomczyk", produkty);	
+		p.addProdukt(new Produkt("Johnnie_Walker_Red", "60"));
+		p.addProdukt(new Produkt("Sobieski", "39"));
+		p.addProdukt(new Produkt("Glenfiddich", "220"));
 
-		produkty.add(new Produkt(ProduktMarks.Bols_Blue, "56"));
-		produkty.add(new Produkt(ProduktMarks.Sobieski, "66"));
-		produkty.add(new Produkt(ProduktMarks.Johnnie_Walker_Blue, "400"));
+		p.addProdukt(new Produkt("Gorzka", "45"));
+		p.editProdukt("Sobieski", "29"); // edycja ceny
+		p.removeProdukt("Johnnie_Walker_Red");  // usuwanie produktu 
+		p.printProdukty();
+		p.clearlist(); //czyszczenie listy
+		
+		
 		Klient g = new Klient("Tadeusz", "Tomczyk", produkty);
+		g.addProdukt(new Produkt("Bols_Blue", "56"));
+		g.addProdukt(new Produkt("Sobieski", "39"));
+		g.addProdukt(new Produkt("Johnnie_Walker_Blue", "400"));
+
 		g.printProdukty();
 
+		System.out.println("");
+		System.out.println("+++++++++++++++++++++++++++++++");
+		p.search("Bols_Blue");//wyszukiwanie elementu
+		System.out.println("+++++++++++++++++++++++++++++++");
+		p.search("Sobieski");//wyszukiwanie elementu
 	}
 
 		

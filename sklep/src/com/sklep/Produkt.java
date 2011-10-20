@@ -1,10 +1,10 @@
 package com.sklep;
  
 public class Produkt implements iProdukt {
-        public ProduktMarks nazwa;
+        public String nazwa;
         public String cena;
  
-        public Produkt(ProduktMarks nazwa, String cena) {
+        public Produkt(String nazwa, String cena) {
                 this.nazwa = nazwa;
                 this.cena = cena;
         }
@@ -12,4 +12,10 @@ public class Produkt implements iProdukt {
         public void printProdukt() {
                 System.out.println("Nazwa: " + nazwa + " ||Cena: " + cena+" zl");
         }
+        
+        public  String getNazwa() {
+        	return nazwa;
+        	}
+       
+        
 }

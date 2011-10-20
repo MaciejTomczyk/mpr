@@ -9,25 +9,49 @@ public class Klient {
         public String nickname;
  
         
+		public void clearlist() {
+			do{produkty.remove(0);}while(produkty.size()!=0);
+			
+		}
+        
         public void addProdukt(Produkt c)
         {
         	produkty.add(c);
         	
         }
+          
+        public void removeProdukt(String nazwa) {
+        	int pozycja = 0;
+        	for (Produkt game : produkty) {
+        	if (game.getNazwa().equals(nazwa)) {
+        	produkty.remove(pozycja);break;
+        	}
+        	}
+        	pozycja++;
+        	}
         
-        public void removelist()
+        public void search(String nazwa)
         {
-        	do{produkty.remove(0);}while(produkty.size()!=0);
-        	
-        }    
+        int pozycja = 0;
+        for (Produkt g : produkty) {
+        if (g.getNazwa().equals(nazwa)) {
+        System.out.println("Szukany produkt " + g.getNazwa() + " znajduje się na pozycji " + pozycja );
+        }
+        pozycja++;
+        }
+        }
         
-        
-        
-        
-        public String toString()
-        		{
-        		return name +"kupil "+produkty.size()+" produkty."; 
-        		}
+        public void editProdukt(String nazwa, String cenaNowa) {
+        	int pozycja = 0;
+        	for (Produkt game : produkty) {
+        	if (game.getNazwa().equals(nazwa)) {
+        	produkty.set(pozycja, new Produkt(nazwa, cenaNowa));
+        	}
+        	pozycja++;
+        	}
+        	}
+
+
         
         public List<Produkt> produkty = new ArrayList<Produkt>();
  
@@ -45,5 +69,7 @@ public class Klient {
                 System.out.println("Klient: " + name + " "  + surname);
                 System.out.println("+++++++++++++++++++++++++++++++");
         }
+
+
 }
  
