@@ -22,8 +22,8 @@ public class Klient {
           
         public void removeProdukt(String nazwa) {
         	int pozycja = 0;
-        	for (Produkt game : produkty) {
-        	if (game.getNazwa().equals(nazwa)) {
+        	for (Produkt g : produkty) {
+        	if (g.getNazwa().equals(nazwa)) {
         	produkty.remove(pozycja);break;
         	}
         	}
