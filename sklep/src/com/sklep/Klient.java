@@ -9,41 +9,41 @@ public class Klient {
         public String nickname;
  
         
-		public void clearlist() {
+		public void czyscliste() {
 			do{produkty.remove(0);}while(produkty.size()!=0);
 			
 		}
         
-        public void addProdukt(Produkt c)
+        public void dodajProdukt(Produkt c)
         {
         	produkty.add(c);
         	
         }
           
-        public void removeProdukt(String nazwa) {
+        public void usunProdukt(String nazwa) {
         	int pozycja = 0;
         	for (Produkt g : produkty) {
-        			if (g.getNazwa().equals(nazwa)) {produkty.remove(pozycja);break;}
+        			if (g.wezNazwa().equals(nazwa)) {produkty.remove(pozycja);break;}
         			pozycja++;
         					}
         	
         	}
         
-        public void search(String nazwa)
+        public void szukaj(String nazwa)
         {
         int pozycja = 0;
         for (Produkt g : produkty) {
-        if (g.getNazwa().equals(nazwa)) {
-        System.out.println("Szukany produkt " + g.getNazwa() + " znajduje się na pozycji " + pozycja );
+        if (g.wezNazwa().equals(nazwa)) {
+        System.out.println("Szukany produkt " + g.wezNazwa() + " znajduje się na pozycji " + pozycja );
         }
         pozycja++;
         }
         }
         
-        public void editProdukt(String nazwa, String cenaNowa) {
+        public void zmienProdukt(String nazwa, String cenaNowa) {
         	int pozycja = 0;
         	for (Produkt g : produkty) {
-        	if (g.getNazwa().equals(nazwa)) {
+        	if (g.wezNazwa().equals(nazwa)) {
         	produkty.set(pozycja, new Produkt(nazwa, cenaNowa));
         	}
         	pozycja++;
@@ -61,10 +61,10 @@ public class Klient {
                 this.surname = surname;
         }
  
-        public void printProdukty() 
+        public void wyswietlProdukty() 
         {
                 for (Produkt c : produkty)
-                        c.printProdukt();
+                        c.wyswietlProdukt();
                 System.out.println("Klient: " + name + " "  + surname);
                 System.out.println("+++++++++++++++++++++++++++++++");
         }

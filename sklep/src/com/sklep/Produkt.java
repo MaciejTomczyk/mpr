@@ -9,11 +9,11 @@ public class Produkt implements iProdukt {
                 this.cena = cena;
         }
  
-        public void printProdukt() {
+        public void wyswietlProdukt() {
                 System.out.println("Nazwa: " + nazwa + " ||Cena: " + cena+" zl");
         }
         
-        public  String getNazwa() {
+        public  String wezNazwa() {
         	return nazwa;
         	}
        
