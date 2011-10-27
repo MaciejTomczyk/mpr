@@ -1,9 +1,15 @@
 package com.sklep;
  
 import java.util.ArrayList;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 import java.util.List;
  
 public class Klient {
+	
+		private PropertyConfigurator logConfig = new PropertyConfigurator();
+		private Logger logger=Logger.getLogger(Klient.class);
+	
         public String name;
         public String surname;
         public String nickname;
@@ -11,19 +17,23 @@ public class Klient {
         
 		public void czyscliste() {
 			do{produkty.remove(0);}while(produkty.size()!=0);
+			logger.info("Wyczyszczono liste");
 			
 		}
         
-        public void dodajProdukt(Produkt c)
+        public void dodajProdukt(String nazwa, int cena)
         {
-        	produkty.add(c);
+        	produkty.add(new Produkt(nazwa, cena));
+    		logConfig.configure("Log4J.properties");
+    		logger.info("Nowy produkt:  " + nazwa + " Cena:" + cena+" zl");
         	
         }
           
         public void usunProdukt(String nazwa) {
         	int pozycja = 0;
         	for (Produkt g : produkty) {
-        			if (g.wezNazwa().equals(nazwa)) {produkty.remove(pozycja);break;}
+        			if (g.wezNazwa().equals(nazwa)) {produkty.remove(pozycja);
+        			logger.info("Usunięto produkt " + nazwa);break;}
         			pozycja++;
         					}
         	
@@ -40,7 +50,7 @@ public class Klient {
         }
         }
         
-        public void zmienProdukt(String nazwa, String cenaNowa) {
+        public void zmienProdukt(String nazwa, int cenaNowa) {
         	int pozycja = 0;
         	for (Produkt g : produkty) {
         	if (g.wezNazwa().equals(nazwa)) {
