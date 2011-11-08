@@ -1,6 +1,6 @@
 package com.sklep;
 public interface iProdukt {
  
-        public void wyswietlProdukt();
+	public void wyswietlProdukt();
  
 }
