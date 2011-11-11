@@ -1,62 +1,70 @@
 package com.sklep;
 
-import java.util.ArrayList;
-import java.util.List;
+
 import org.apache.log4j.PropertyConfigurator;
 import org.apache.log4j.Logger;
+
+import com.sklep.events.IProductProcesses;
+import com.sklep.events.Desk;
+import com.sklep.events.Desk.CleanProduct;
+import com.sklep.events.Desk.ChangeBoxProduct;
 
 public class Main {
 
 	private static Logger logger = Logger.getLogger(Main.class);
 
-	public static void main(String[] args) throws MyException {
+	public static void main(String[] args) throws PriceException {
 
 		PropertyConfigurator.configure("Log4J.properties");
 
-		System.out.println("+++++++++++++++++++++++++++++++");
+		
 
-		List<Produkt> produkty = new ArrayList<Produkt>();
 
-		Klient z = new Klient("Paweł", "Tomczyk", produkty);
+		Client c = new Client("Maciej Tomczyk");
 
-		z.dodajProdukt("Malibu", 20);
+		c.addProduct(new Product(ProductMarks.Glenfiddich, 199));
+		c.addProduct(new Product(ProductMarks.Johniee_Walker_Blue, 399));
+		c.addProduct(new Product(ProductMarks.Malibu, 55));
+		c.printProducts();
+		System.out.println(".....................");
 		try {
-			z.dodajProdukt("Likier", -2);
-		} catch (MyException e) {
+			c.addProduct(new Product(ProductMarks.Glenfiddich, -5));
+		} catch (PriceException e) {
 			logger.error(e.getMessage());
 		}
-		z.wyswietlProdukty();
-		z.czyscliste();
-
-		Klient p = new Klient("Maciej", "Tomczyk", produkty);
-		p.dodajProdukt("Johnnie_Walker_Red", 60);
-		p.dodajProdukt("Sobieski", 39);
-		p.dodajProdukt("Glenfiddich", 220);
-
-		p.dodajProdukt("Gorzka", 45);
-		p.usunProdukt("Sobieski"); // usuwanie produktu
-		// czyszczenie listy
-
+		c.printProducts();
+		System.out.println(".....................");
+		c.addProduct(new Product(ProductMarks.Johniee_Walker_Red, 0));
+		c.checkPrice(c.findProduct(ProductMarks.Johniee_Walker_Red));
+		c.deleteProduct(c.findProduct(ProductMarks.Glenfiddich));
+		c.printProducts();
+		System.out.println(".....................");
+		
+		Product p= new Product(ProductMarks.Gorzka,15);
 		try {
-			p.zmienProdukt("Glenfiddich", 190);// edycja ceny
-		} catch (MyException e) {
-			logger.error(e.getMessage());
-		}
-		p.wyswietlProdukty();
-		p.czyscliste();
+			p.setPrice(-2);
+			} catch (PriceException e) {
 
-		Klient g = new Klient("Tadeusz", "Tomczyk", produkty);
-		g.dodajProdukt("Bols_Blue", 56);
-		g.dodajProdukt("Sobieski", 39);
-		g.dodajProdukt("Johnnie_Walker_Blue", 400);
-
-		g.wyswietlProdukty();
-
-		System.out.println("");
-		System.out.println("-------------------------------");
-		p.szukajProduktu("Bols_Blue");// wyszukiwanie elementu
-		System.out.println("-------------------------------");
-		p.szukajProduktu("Sobieski");// wyszukiwanie elementu
+			logger.error(e);
+			logger.fatal(e);
+			logger.info(e);
+			logger.warn(e);
+			}
+		System.out.println(p.getName()+" cena: "+p.getPrice());
+		
+		
+	
+		System.out.println(".....................");
+		Desk desk =new Desk();
+		IProductProcesses clean=new CleanProduct();
+		IProductProcesses change=new ChangeBoxProduct();
+		Product z =new Product(ProductMarks.Sheridans,4);    
+		desk.addProcess(clean);
+		desk.addProcess(change);
+		desk.setProduct(z);
+		desk.executeProcesses();
+		
+		
 	}
 
 }
