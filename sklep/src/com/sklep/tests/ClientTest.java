@@ -18,6 +18,7 @@ public class ClientTest {
 	
 	private Client c=new Client("Maciej Tomczyk");
 	private Product p=new Product(ProductMarks.Gorzka,15);
+	private Product o=new Product(ProductMarks.Gorzka,16);
 	
 
 	@BeforeClass
@@ -39,11 +40,7 @@ public class ClientTest {
 	@Test
 	public void testClearlist() {
 		c.clearlist();
-	}
-
-	@Test
-	public void testPrintProducts() {
-		c.printProducts();
+		assertTrue(c.products.size()<=0);
 	}
 
 	@Test
@@ -55,101 +52,51 @@ public class ClientTest {
 
 	@Test
 	public void testDeleteProduct() {
-		fail("Not yet implemented");
+		c.deleteProduct(p);
+		assertTrue(c.products.size()<=0);
 	}
 
 	@Test
-	public void testCheckPrice() {
-		fail("Not yet implemented");
+	public void testCheckPrice() throws PriceException {
+		c.checkPrice(p);
+		assertTrue(p.getPrice()>0);
 	}
 
 	@Test
-	public void testChangeProductPrice() {
-		fail("Not yet implemented");
+	public void testChangeProductPrice() throws PriceException {
+		c.changeProductPrice(p, 5);
+		assertTrue(p.getPrice()==5);
 	}
 
 	@Test
-	public void testChangeProductCode() {
-		fail("Not yet implemented");
+	public void testChangeProductCode() throws PriceException {
+		c.changeProductCode(p, 11114444);
+		assertTrue(p.getCode()==11114444);
+		
 	}
 
 	@Test
 	public void testFindProduct() {
-		fail("Not yet implemented");
+		c.findProduct(ProductMarks.Glenfiddich);
 	}
 
 	@Test
-	public void testClient() {
-		fail("Not yet implemented");
+	public void testClient() throws PriceException {
+		Client n=new Client("Lol");
+		n.addProduct(p);
+		assertTrue(n.products.size()>0);
 	}
 
 	@Test
 	public void testFindAllProducts() {
-		fail("Not yet implemented");
+		c.FindAllProducts(ProductMarks.Gorzka);
+		
 	}
 
-	@Test
-	public void testObject() {
-		fail("Not yet implemented");
-	}
 
-	@Test
-	public void testGetClass() {
-		fail("Not yet implemented");
-	}
 
-	@Test
-	public void testHashCode() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testEquals() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testClone() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testToString() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testNotify() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testNotifyAll() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testWaitLong() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testWaitLongInt() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testWait() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testFinalize() {
-		fail("Not yet implemented");
-	}
-	
 	@Test(expected=PriceException.class, timeout=100)
-	public void testException() throws PriceException
+	public void testPriceException() throws PriceException
 	{
 	new Product(ProductMarks.Johniee_Walker_Blue,155).setPrice(-8);
 	}

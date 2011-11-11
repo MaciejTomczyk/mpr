@@ -8,8 +8,19 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.sklep.Client;
+import com.sklep.PriceException;
+import com.sklep.Product;
+import com.sklep.ProductMarks;
+
 public class ProductTest {
 
+	
+	private Client c=new Client("Maciej Tomczyk");
+	private Product p=new Product(ProductMarks.Gorzka,15);
+	
+	
+	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
@@ -26,109 +37,51 @@ public class ProductTest {
 	public void tearDown() throws Exception {
 	}
 
-	@Test
-	public void testProductProductMarksInt() {
-		fail("Not yet implemented");
-	}
+
 
 	@Test
-	public void testProductProductMarksDouble() {
-		fail("Not yet implemented");
+	public void testSetPrice() throws PriceException {
+		p.setPrice(55);
+		assertTrue(p.getPrice()==55);
 	}
 
-	@Test
-	public void testSetPrice() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testPrintProduct() {
-		fail("Not yet implemented");
-	}
 
 	@Test
 	public void testGetName() {
-		fail("Not yet implemented");
+		p.setName(ProductMarks.Malibu);
+		assertTrue(p.getName().equals(ProductMarks.Malibu));
 	}
 
 	@Test
-	public void testGetPrice() {
-		fail("Not yet implemented");
+	public void testGetPrice() throws PriceException {
+		p.setPrice(55);
+		assertTrue(p.getPrice()==55);
 	}
 
 	@Test
 	public void testSetName() {
-		fail("Not yet implemented");
+		
+		p.setName(ProductMarks.Glenfiddich);
+		assertTrue(p.getName().equals(ProductMarks.Glenfiddich));
 	}
 
 	@Test
 	public void testGetCode() {
-		fail("Not yet implemented");
+		p.getCode();
 	}
 
 	@Test
 	public void testSetCode() {
-		fail("Not yet implemented");
+		p.setCode(11112222);
+		assertTrue(p.getCode()==11112222);
 	}
 
-	@Test
-	public void testObject() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetClass() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testHashCode() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testEquals() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testClone() {
-		fail("Not yet implemented");
-	}
-
+	
 	@Test
 	public void testToString() {
-		fail("Not yet implemented");
+		System.out.println(p);
 	}
 
-	@Test
-	public void testNotify() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testNotifyAll() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testWaitLong() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testWaitLongInt() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testWait() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testFinalize() {
-		fail("Not yet implemented");
-	}
+	
 
 }
