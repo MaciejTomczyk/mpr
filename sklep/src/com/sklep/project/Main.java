@@ -1,4 +1,4 @@
-package com.sklep;
+package com.sklep.project;
 
 
 import org.apache.log4j.PropertyConfigurator;
@@ -8,6 +8,8 @@ import com.sklep.events.IProductProcesses;
 import com.sklep.events.Desk;
 import com.sklep.events.Desk.CleanProduct;
 import com.sklep.events.Desk.ChangeBoxProduct;
+import com.sklep.events.Desk.PromoteProduct;
+import com.sklep.events.Desk.RollbackProduct;
 
 public class Main {
 
@@ -25,10 +27,12 @@ public class Main {
 		c.addProduct(new Product(ProductMarks.Glenfiddich, 199));
 		c.addProduct(new Product(ProductMarks.Johniee_Walker_Blue, 399));
 		c.addProduct(new Product(ProductMarks.Malibu, 55));
+		c.changeProductPrice(c.findProduct(ProductMarks.Malibu), 50);
 		c.printProducts();
 		System.out.println(".....................");
 		try {
 			c.addProduct(new Product(ProductMarks.Glenfiddich, -5));
+			
 		} catch (PriceException e) {
 			logger.error(e.getMessage());
 		}
@@ -51,16 +55,30 @@ public class Main {
 			logger.warn(e);
 			}
 		System.out.println(p.getName()+" cena: "+p.getPrice());
+		System.out.println(".....................");
 		
+		
+		Client d = new Client("Tadeusz Tomczyk");
+		d.addProduct(new Product(ProductMarks.Johniee_Walker_Red,(double)5556643));
+		d.addProduct(new Product(ProductMarks.Johniee_Walker_Blue,(double)5556645));
+		d.FindAllProductsByCode(5556643);
+		d.DeleteAllProductsByCode(5556643);
+		System.out.println(".....................");
+		d.FindAllProductsByCode(5556643);
+		System.out.println(".....................");
 		
 	
 		System.out.println(".....................");
 		Desk desk =new Desk();
 		IProductProcesses clean=new CleanProduct();
 		IProductProcesses change=new ChangeBoxProduct();
+		IProductProcesses promote=new PromoteProduct();
+		IProductProcesses rollback=new RollbackProduct();
 		Product z =new Product(ProductMarks.Sheridans,4);    
 		desk.addProcess(clean);
 		desk.addProcess(change);
+		desk.addProcess(promote);
+		desk.addProcess(rollback);
 		desk.setProduct(z);
 		desk.executeProcesses();
 		

@@ -1,4 +1,4 @@
-package com.sklep;
+package com.sklep.project;
 
 public class Product implements IProduct  {
 	public ProductMarks mark;

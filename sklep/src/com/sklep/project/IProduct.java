@@ -1,4 +1,4 @@
-package com.sklep;
+package com.sklep.project;
 public interface IProduct {
  
 	public void printProduct();

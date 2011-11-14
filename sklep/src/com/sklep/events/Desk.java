@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import com.sklep.Product;
+import com.sklep.project.PriceException;
+import com.sklep.project.Product;
 
 public class Desk {
 
@@ -65,6 +66,33 @@ public static class ChangeBoxProduct implements IProductProcesses{
 
 }
 
+public static class PromoteProduct implements IProductProcesses{
+
+	public void processProduct(ProductEvent Event){
+		System.out.println(Event.getProduct().getName()+" is 10% cheaper today!.");
+		int z=Event.getProduct().getPrice();
+		z=z/10*9;
+		try {
+			Event.getProduct().setPrice(z);
+		} catch (PriceException e) {
+
+		}
+	}
+	}
+	public static class RollbackProduct implements IProductProcesses{
+
+		public void processProduct(ProductEvent Event){
+			System.out.println(Event.getProduct().getName()+" returning to standard price.");
+			int z=Event.getProduct().getPrice();
+			z=z*(10/9);
+			try {
+				Event.getProduct().setPrice(z);
+			} catch (PriceException e) {
+
+			}
+		}
+		}
+	
 	
 	
 	

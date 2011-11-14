@@ -9,10 +9,11 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.sklep.Client;
-import com.sklep.PriceException;
-import com.sklep.Product;
-import com.sklep.ProductMarks;
+import com.sklep.project.Client;
+import com.sklep.project.CodeException;
+import com.sklep.project.PriceException;
+import com.sklep.project.Product;
+import com.sklep.project.ProductMarks;
 
 public class ClientTest {
 	
@@ -69,7 +70,7 @@ public class ClientTest {
 	}
 
 	@Test
-	public void testChangeProductCode() throws PriceException {
+	public void testChangeProductCode() throws CodeException {
 		c.changeProductCode(p, 11114444);
 		assertTrue(p.getCode()==11114444);
 		
@@ -88,8 +89,8 @@ public class ClientTest {
 	}
 
 	@Test
-	public void testFindAllProducts() {
-		c.FindAllProducts(ProductMarks.Gorzka);
+	public void testFindAllProductsByName() {
+		c.FindAllProductsByName(ProductMarks.Gorzka);
 		
 	}
 

@@ -2,7 +2,7 @@ package com.sklep.events;
 
 import java.util.EventObject;
 
-import com.sklep.Product;
+import com.sklep.project.Product;
 
 
 public class ProductEvent extends EventObject {

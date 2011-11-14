@@ -1,4 +1,4 @@
-package com.sklep;
+package com.sklep.project;
 
 public enum ProductMarks {
 

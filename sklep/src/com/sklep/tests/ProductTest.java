@@ -8,10 +8,10 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.sklep.Client;
-import com.sklep.PriceException;
-import com.sklep.Product;
-import com.sklep.ProductMarks;
+import com.sklep.project.Client;
+import com.sklep.project.PriceException;
+import com.sklep.project.Product;
+import com.sklep.project.ProductMarks;
 
 public class ProductTest {
 
@@ -30,7 +30,7 @@ public class ProductTest {
 	}
 
 	@Before
-	public void setUp() throws Exception {
+	public void setUsp() throws Exception {
 	}
 
 	@After
