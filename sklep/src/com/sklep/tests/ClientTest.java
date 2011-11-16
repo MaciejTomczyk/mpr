@@ -94,6 +94,19 @@ public class ClientTest {
 		
 	}
 
+	@Test
+	public void testDeleteAllProductsByCode() throws PriceException, CodeException{
+		c.addProduct(p);
+		c.addProduct(o);
+		c.changeProductCode(p, 1111444);
+		c.changeProductCode(o, 1111444);
+		c.DeleteAllProductsByCode(1111444);
+		assertTrue(c.products.size()==0);
+		
+	}
+	
+	
+	
 
 
 	@Test(expected=PriceException.class, timeout=100)

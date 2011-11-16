@@ -130,18 +130,21 @@ public class Client {
 		return results;
 	}
 	
-	public void DeleteAllProductsByCode(double code)
-	{
-		for(Product p: products)
-		{
-			
-					if(p.getCode()==code)
-					{
-							
-							products.remove(p);
-							System.out.println(p.getName()+" removed.");
-					}
 
+	
+	
+	
+	
+	public List<Product> DeleteAllProductsByCode(double code) throws PriceException {
+		List<Product> results = new ArrayList<Product>();
+		for (Product p : products) {
+		if (p.getCode()==code) {
+		results.add(p);
+		products.remove(p);
+		
+		}
+		}
+		return results;
 		}
 		
 	}
@@ -150,4 +153,4 @@ public class Client {
 	
 	
 	
-}
+

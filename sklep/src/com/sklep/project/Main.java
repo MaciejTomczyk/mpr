@@ -60,7 +60,7 @@ public class Main {
 		
 		Client d = new Client("Tadeusz Tomczyk");
 		d.addProduct(new Product(ProductMarks.Johniee_Walker_Red,(double)5556643));
-		d.addProduct(new Product(ProductMarks.Johniee_Walker_Blue,(double)5556645));
+		d.addProduct(new Product(ProductMarks.Johniee_Walker_Blue,(double)5556643));
 		d.FindAllProductsByCode(5556643);
 		d.DeleteAllProductsByCode(5556643);
 		System.out.println(".....................");

@@ -67,7 +67,8 @@ public class ProductTest {
 
 	@Test
 	public void testGetCode() {
-		p.getCode();
+		p.setCode(11114444);
+		assertTrue(p.getCode()==11114444);
 	}
 
 	@Test
@@ -77,10 +78,6 @@ public class ProductTest {
 	}
 
 	
-	@Test
-	public void testToString() {
-		System.out.println(p);
-	}
 
 	
 
