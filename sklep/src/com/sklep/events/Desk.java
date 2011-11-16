@@ -61,6 +61,8 @@ public static class CleanProduct implements IProductProcesses
 public static class ChangeBoxProduct implements IProductProcesses{
 
 	public void processProduct(ProductEvent Event){
+		
+		if(Event.getProduct().getBox())
 		System.out.println(Event.getProduct().getName()+" the box has been changed.");
 	}
 

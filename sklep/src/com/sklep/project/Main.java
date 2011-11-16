@@ -73,7 +73,8 @@ public class Main {
 		IProductProcesses change=new ChangeBoxProduct();
 		IProductProcesses promote=new PromoteProduct();
 		IProductProcesses rollback=new RollbackProduct();
-		Product z =new Product(ProductMarks.Sheridans,4);    
+		Product z =new Product(ProductMarks.Sheridans,4);
+		z.setBox();
 		desk.addProcess(clean);
 		desk.addProcess(change);
 		desk.addProcess(promote);

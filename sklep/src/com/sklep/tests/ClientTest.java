@@ -86,7 +86,7 @@ public class ClientTest {
 		
 		c.addProduct(new Product(ProductMarks.Johniee_Walker_Red,(double)11114444));
 		c.addProduct(new Product(ProductMarks.Johniee_Walker_Blue,(double)11114444));
-		c.DeleteManyProductsByCode(1111444);
+		c.DeleteManyProductsByCode(11114444);
 		assertTrue(c.products.size()==0);
 		
 	}

@@ -119,16 +119,9 @@ public class Client {
 	
 	
 	
-	public List<Product> DeleteManyProductsByCode(double code) throws PriceException {
-		List<Product> results = new ArrayList<Product>();
-		for (Product p : products) {
-		if (p.getCode()==code) {
-		results.add(p);
-		}
-		
-		}
-		products.removeAll(results);
-		return results;
+	public void DeleteManyProductsByCode(double code) throws PriceException {
+		products.removeAll(FindAllProductsByCode(code));
+	
 		}
 		
 	}

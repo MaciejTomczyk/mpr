@@ -4,6 +4,7 @@ public class Product implements IProduct  {
 	public ProductMarks mark;
 	public int price;
 	public double code;
+	boolean box;
 
 	public Product(ProductMarks mark, int price) {
 		this.mark = mark;
@@ -15,6 +16,8 @@ public class Product implements IProduct  {
 		this.code=code;
 		
 	}
+	
+	
 	
 	public void setPrice(int price) throws PriceException {
 		if (price < 0)
@@ -31,6 +34,18 @@ public class Product implements IProduct  {
 		return this.mark;
 	}
 
+	public void setBox(){
+		this.box=true;
+		
+	}
+	
+	public boolean getBox(){
+		return this.box=box;
+		
+	}
+	
+	
+	
 	public Integer getPrice() {
 		return price;
 	}
