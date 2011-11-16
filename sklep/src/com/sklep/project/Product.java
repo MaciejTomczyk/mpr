@@ -43,8 +43,11 @@ public class Product implements IProduct  {
 		return this.code;
 	}
 
-	public void setCode(double code) {
-		this.code=code;
+	public void setCode(double code) throws CodeException {
+		if (code < 0)
+			throw new CodeException("Code cannot be lower than 0");
+		else
+			this.code = code;
 	}
 
 

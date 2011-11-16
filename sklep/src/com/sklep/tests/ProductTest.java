@@ -9,6 +9,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.sklep.project.Client;
+import com.sklep.project.CodeException;
 import com.sklep.project.PriceException;
 import com.sklep.project.Product;
 import com.sklep.project.ProductMarks;
@@ -18,6 +19,7 @@ public class ProductTest {
 	
 	private Client c=new Client("Maciej Tomczyk");
 	private Product p=new Product(ProductMarks.Gorzka,15);
+	private Product o=new Product(ProductMarks.Gorzka,16);
 	
 	
 	
@@ -42,39 +44,42 @@ public class ProductTest {
 	@Test
 	public void testSetPrice() throws PriceException {
 		p.setPrice(55);
-		assertTrue(p.getPrice()==55);
+		o.setPrice(55);
+		assertSame(p.getPrice(),o.getPrice());
 	}
 
 
 	@Test
 	public void testGetName() {
 		p.setName(ProductMarks.Malibu);
-		assertTrue(p.getName().equals(ProductMarks.Malibu));
+		o.setName(ProductMarks.Malibu);
+		assertSame(p.getName(),o.getName());
 	}
 
 	@Test
 	public void testGetPrice() throws PriceException {
 		p.setPrice(55);
-		assertTrue(p.getPrice()==55);
+		o.setPrice(55);
+		assertEquals(p.getPrice(),o.getPrice());
 	}
 
 	@Test
 	public void testSetName() {
 		
 		p.setName(ProductMarks.Glenfiddich);
-		assertTrue(p.getName().equals(ProductMarks.Glenfiddich));
+		assertSame(p.getName(),(ProductMarks.Glenfiddich));
 	}
 
 	@Test
-	public void testGetCode() {
+	public void testGetCode() throws CodeException {
 		p.setCode(11114444);
 		assertTrue(p.getCode()==11114444);
 	}
 
 	@Test
-	public void testSetCode() {
-		p.setCode(11112222);
-		assertTrue(p.getCode()==11112222);
+	public void testSetCode() throws CodeException {
+		p.setCode(111122225);
+		assertTrue(p.getCode()==111122225);
 	}
 
 	

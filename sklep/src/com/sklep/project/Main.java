@@ -27,7 +27,6 @@ public class Main {
 		c.addProduct(new Product(ProductMarks.Glenfiddich, 199));
 		c.addProduct(new Product(ProductMarks.Johniee_Walker_Blue, 399));
 		c.addProduct(new Product(ProductMarks.Malibu, 55));
-		c.changeProductPrice(c.findProduct(ProductMarks.Malibu), 50);
 		c.printProducts();
 		System.out.println(".....................");
 		try {
@@ -62,7 +61,7 @@ public class Main {
 		d.addProduct(new Product(ProductMarks.Johniee_Walker_Red,(double)5556643));
 		d.addProduct(new Product(ProductMarks.Johniee_Walker_Blue,(double)5556643));
 		d.FindAllProductsByCode(5556643);
-		d.DeleteAllProductsByCode(5556643);
+		d.DeleteManyProductsByCode(5556643);
 		System.out.println(".....................");
 		d.FindAllProductsByCode(5556643);
 		System.out.println(".....................");

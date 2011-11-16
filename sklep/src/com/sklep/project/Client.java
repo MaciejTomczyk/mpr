@@ -56,24 +56,7 @@ public class Client {
 	}
 	
 	
-	
-	public void changeProductPrice(Product product, int price) throws PriceException{
-			product.setPrice(price);
-			checkPrice(product);
-	}
-
-	public void changeProductCode(Product product, double code) throws CodeException {
-		if (code > 0) {
-			product.setCode(code);
-			logger.info("Editting: " + product.getName() + " new code:  " + 
-					+ code);
-		}
-		if (code <= 0)
-			throw new CodeException("Code cannot be negative");
-	}	
-	
-	
-	
+		
 	
 	public Product findProduct(ProductMarks mark) {
 		for (Product p : products)
@@ -118,12 +101,13 @@ public class Client {
 		return results;
 	}
 	
-	public List<Product> FindAllProductsByCode(double code){
-		List<Product> results=new ArrayList<Product>();
+	public ArrayList<Product> FindAllProductsByCode(double code){
+		ArrayList<Product> results=new ArrayList<Product>();
 		for(Product p: products){
 			if(p.getCode()==code){
 				System.out.println("Name " +p.getName()+" code: "+p.getCode());
 				results.add(p);
+				
 			}
 		}
 		
@@ -135,15 +119,15 @@ public class Client {
 	
 	
 	
-	public List<Product> DeleteAllProductsByCode(double code) throws PriceException {
+	public List<Product> DeleteManyProductsByCode(double code) throws PriceException {
 		List<Product> results = new ArrayList<Product>();
 		for (Product p : products) {
 		if (p.getCode()==code) {
 		results.add(p);
-		products.remove(p);
+		}
 		
 		}
-		}
+		products.removeAll(results);
 		return results;
 		}
 		

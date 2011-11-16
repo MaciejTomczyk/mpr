@@ -47,7 +47,7 @@ public class ClientTest {
 	@Test
 	public void testAddProduct() throws PriceException {
 		c.addProduct(p);
-		assertTrue(c.products.size()>0);
+		assertNotNull(c.products);
 		
 	}
 
@@ -63,51 +63,34 @@ public class ClientTest {
 		assertTrue(p.getPrice()>0);
 	}
 
-	@Test
-	public void testChangeProductPrice() throws PriceException {
-		c.changeProductPrice(p, 5);
-		assertTrue(p.getPrice()==5);
-	}
 
-	@Test
-	public void testChangeProductCode() throws CodeException {
-		c.changeProductCode(p, 11114444);
-		assertTrue(p.getCode()==11114444);
-		
-	}
 
 	@Test
 	public void testFindProduct() {
 		c.findProduct(ProductMarks.Glenfiddich);
+		assertTrue(c.products.size()==0);
 	}
 
 	@Test
 	public void testClient() throws PriceException {
 		Client n=new Client("Lol");
 		n.addProduct(p);
-		assertTrue(n.products.size()>0);
+		assertFalse(n.products.size()<0);
 	}
 
-	@Test
-	public void testFindAllProductsByName() {
-		c.FindAllProductsByName(ProductMarks.Gorzka);
 		
-	}
+	
 
 	@Test
-	public void testDeleteAllProductsByCode() throws PriceException, CodeException{
-		c.addProduct(p);
-		c.addProduct(o);
-		c.changeProductCode(p, 1111444);
-		c.changeProductCode(o, 1111444);
-		c.DeleteAllProductsByCode(1111444);
+	public void testDeleteManyProductsByCode() throws PriceException, CodeException{
+		
+		c.addProduct(new Product(ProductMarks.Johniee_Walker_Red,(double)11114444));
+		c.addProduct(new Product(ProductMarks.Johniee_Walker_Blue,(double)11114444));
+		c.DeleteManyProductsByCode(1111444);
 		assertTrue(c.products.size()==0);
 		
 	}
 	
-	
-	
-
 
 	@Test(expected=PriceException.class, timeout=100)
 	public void testPriceException() throws PriceException
