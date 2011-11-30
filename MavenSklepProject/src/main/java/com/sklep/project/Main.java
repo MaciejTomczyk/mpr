@@ -1,6 +1,8 @@
 package com.sklep.project;
 
 
+import java.sql.SQLException;
+
 import org.apache.log4j.PropertyConfigurator;
 import org.apache.log4j.Logger;
 
@@ -10,12 +12,13 @@ import com.sklep.events.Desk.CleanProduct;
 import com.sklep.events.Desk.ChangeBoxProduct;
 import com.sklep.events.Desk.PromoteProduct;
 import com.sklep.events.Desk.RollbackProduct;
+import com.sklep.services.ClientDBManager;
 
 public class Main {
 
 	private static Logger logger = Logger.getLogger(Main.class);
 
-	public static void main(String[] args) throws PriceException {
+	public static void main(String[] args) throws PriceException, SQLException, com.sklep.services.SQLException {
 
 		PropertyConfigurator.configure("Log4J.properties");
 
@@ -81,6 +84,11 @@ public class Main {
 		desk.addProcess(rollback);
 		desk.setProduct(z);
 		desk.executeProcesses();
+		
+		ClientDBManager db= new ClientDBManager();
+		db.addClient(c);
+		
+		
 		
 		
 	}
