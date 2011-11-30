@@ -87,9 +87,17 @@ public class Main {
 		
 		ClientDBManager db= new ClientDBManager();
 		db.addClient(c);
-		
-		
-		
+		db.addClient(d);
+		for(Client client: db.getAllClients())
+		{
+			System.out.println(client.getName());
+		}
+		db.clear();
+		System.out.println(".....................");
+		for(Client client: db.getAllClients())
+		{
+			System.out.println(client.getName());
+		}
 		
 	}
 

@@ -131,4 +131,9 @@ public class Client {
 	products.removeAll(products);
 	
 	}
+
+	public String getName() {
+		
+		return this.name;
+	}
 	}
