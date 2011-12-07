@@ -101,7 +101,7 @@ public class Client {
 		return results;
 	}
 	
-	public ArrayList<Product> FindAllProductsByCode(double code){
+	public ArrayList<Product> FindAllProductsByCode(float code){
 		ArrayList<Product> results=new ArrayList<Product>();
 		for(Product p: products){
 			if(p.getCode()==code){
@@ -119,7 +119,7 @@ public class Client {
 	
 	
 	
-	public void DeleteManyProductsByCode(double code) throws PriceException {
+	public void DeleteManyProductsByCode(float code) throws PriceException {
 		products.removeAll(FindAllProductsByCode(code));
 	
 		}

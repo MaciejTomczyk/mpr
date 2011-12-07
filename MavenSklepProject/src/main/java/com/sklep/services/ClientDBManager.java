@@ -17,6 +17,7 @@ public class ClientDBManager {
 	private Statement stmt;
 	private PreparedStatement addClientStmt;
 	private PreparedStatement getClientStmt;
+
 	private PreparedStatement deleteClientStmt;
 	
 	public ClientDBManager() throws java.sql.SQLException, SQLException
@@ -24,6 +25,7 @@ public class ClientDBManager {
 	
 		conn= DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/workdb");
 		boolean clientTableExists=false;
+
 		ResultSet rs= conn.getMetaData().getTables(null, null,null, null);
 		stmt=conn.createStatement();
 		
@@ -47,7 +49,13 @@ public class ClientDBManager {
 					"" +
 					")");
 				
-		}		
+		}
+		
+		
+		
+		
+		
+			
 			
 		
 			addClientStmt=conn.prepareStatement("" +
@@ -57,6 +65,9 @@ public class ClientDBManager {
 			getClientStmt=conn.prepareStatement("" +
 			"SELECT * FROM Client" +
 			"");
+			
+	
+			
 	
 			deleteClientStmt=conn.prepareStatement("" +
 					"DELETE FROM Client" +
@@ -73,6 +84,10 @@ public class ClientDBManager {
 			addClientStmt.executeUpdate();
 
 		}
+		
+
+		
+		
 
 		public List<Client> getAllClients() throws java.sql.SQLException, SQLException
 		{

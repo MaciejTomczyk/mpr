@@ -13,6 +13,7 @@ import com.sklep.events.Desk.ChangeBoxProduct;
 import com.sklep.events.Desk.PromoteProduct;
 import com.sklep.events.Desk.RollbackProduct;
 import com.sklep.services.ClientDBManager;
+import com.sklep.services.ProductDBManager;
 
 public class Main {
 
@@ -27,26 +28,26 @@ public class Main {
 
 		Client c = new Client("Maciej Tomczyk");
 
-		c.addProduct(new Product(ProductMarks.Glenfiddich, 199));
-		c.addProduct(new Product(ProductMarks.Johniee_Walker_Blue, 399));
-		c.addProduct(new Product(ProductMarks.Malibu, 55));
+		c.addProduct(new Product(ProductMarks.Glenfiddich,(double) 199));
+		c.addProduct(new Product(ProductMarks.Johniee_Walker_Blue,(double) 399));
+		c.addProduct(new Product(ProductMarks.Malibu,(double) 55));
 		c.printProducts();
 		System.out.println(".....................");
 		try {
-			c.addProduct(new Product(ProductMarks.Glenfiddich, -5));
+			c.addProduct(new Product(ProductMarks.Glenfiddich,(double) -5));
 			
 		} catch (PriceException e) {
 			logger.error(e.getMessage());
 		}
 		c.printProducts();
 		System.out.println(".....................");
-		c.addProduct(new Product(ProductMarks.Johniee_Walker_Red, 0));
+		c.addProduct(new Product(ProductMarks.Johniee_Walker_Red,(double) 0));
 		c.checkPrice(c.findProduct(ProductMarks.Johniee_Walker_Red));
 		c.deleteProduct(c.findProduct(ProductMarks.Glenfiddich));
 		c.printProducts();
 		System.out.println(".....................");
 		
-		Product p= new Product(ProductMarks.Gorzka,15);
+		Product p= new Product(ProductMarks.Gorzka,(double)15);
 		try {
 			p.setPrice(-2);
 			} catch (PriceException e) {
@@ -61,8 +62,8 @@ public class Main {
 		
 		
 		Client d = new Client("Tadeusz Tomczyk");
-		d.addProduct(new Product(ProductMarks.Johniee_Walker_Red,(double)5556643));
-		d.addProduct(new Product(ProductMarks.Johniee_Walker_Blue,(double)5556643));
+		d.addProduct(new Product(ProductMarks.Johniee_Walker_Red,(float)5556643));
+		d.addProduct(new Product(ProductMarks.Johniee_Walker_Blue,(float)5556643));
 		d.FindAllProductsByCode(5556643);
 		d.DeleteManyProductsByCode(5556643);
 		System.out.println(".....................");
@@ -76,7 +77,13 @@ public class Main {
 		IProductProcesses change=new ChangeBoxProduct();
 		IProductProcesses promote=new PromoteProduct();
 		IProductProcesses rollback=new RollbackProduct();
-		Product z =new Product(ProductMarks.Sheridans,4);
+		Product z =new Product(ProductMarks.Sheridans,(double)4);
+		try {
+			z.setCode(11112222);
+		} catch (CodeException e) {
+		
+			e.printStackTrace();
+		}
 		z.setBox();
 		desk.addProcess(clean);
 		desk.addProcess(change);
@@ -84,20 +91,25 @@ public class Main {
 		desk.addProcess(rollback);
 		desk.setProduct(z);
 		desk.executeProcesses();
-		
-		ClientDBManager db= new ClientDBManager();
-		db.addClient(c);
-		db.addClient(d);
-		for(Client client: db.getAllClients())
+		ClientDBManager cdb= new ClientDBManager();
+		cdb.addClient(c);
+		cdb.addClient(d);
+		for(Client client: cdb.getAllClients())
 		{
 			System.out.println(client.getName());
 		}
-		db.clear();
+		cdb.clear();
 		System.out.println(".....................");
-		for(Client client: db.getAllClients())
+		for(Client client: cdb.getAllClients())
 		{
 			System.out.println(client.getName());
 		}
+		
+		System.out.println(".....................");
+		ProductDBManager pdb= new ProductDBManager();
+		pdb.addProduct(z);
+		//pdb.droptableproduct();
+		
 		
 	}
 

@@ -2,16 +2,16 @@ package com.sklep.project;
 
 public class Product implements IProduct  {
 	public ProductMarks mark;
-	public int price;
-	public double code;
+	public double price;
+	public float code;
 	boolean box;
 
-	public Product(ProductMarks mark, int price) {
+	public Product(ProductMarks mark, double price) {
 		this.mark = mark;
 		this.price = price;
 	}
 
-	public Product(ProductMarks mark, double code){
+	public Product(ProductMarks mark, float code){
 		this.mark=mark;
 		this.code=code;
 		
@@ -19,11 +19,11 @@ public class Product implements IProduct  {
 	
 	
 	
-	public void setPrice(int price) throws PriceException {
-		if (price < 0)
+	public void setPrice(double z) throws PriceException {
+		if (z < 0)
 			throw new PriceException("Price cannot be lower than 0");
 		else
-			this.price = price;
+			this.price = z;
 	}
 
 	public void printProduct() {
@@ -46,7 +46,7 @@ public class Product implements IProduct  {
 	
 	
 	
-	public Integer getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
@@ -54,19 +54,22 @@ public class Product implements IProduct  {
 	this.mark=mark;
 		}
 
-	public double getCode(){
+	public float getCode(){
 		return this.code;
 	}
 
-	public void setCode(double code) throws CodeException {
+	public void setCode(float code) throws CodeException {
 		if (code < 0)
 			throw new CodeException("Code cannot be lower than 0");
 		else
 			this.code = code;
 	}
 
+		
+		
+	}
 
 
 
 
-}
+

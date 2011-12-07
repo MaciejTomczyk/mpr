@@ -72,8 +72,8 @@ public static class PromoteProduct implements IProductProcesses{
 
 	public void processProduct(ProductEvent Event){
 		System.out.println(Event.getProduct().getName()+" is 10% cheaper today!.");
-		int z=Event.getProduct().getPrice();
-		z=z/10*9;
+		double z=Event.getProduct().getPrice();
+		z=(double)((double)(z/10)*9);
 		try {
 			Event.getProduct().setPrice(z);
 		} catch (PriceException e) {
@@ -85,8 +85,8 @@ public static class PromoteProduct implements IProductProcesses{
 
 		public void processProduct(ProductEvent Event){
 			System.out.println(Event.getProduct().getName()+" returning to standard price.");
-			int z=Event.getProduct().getPrice();
-			z=z*(10/9);
+			double z=Event.getProduct().getPrice();
+			z=(double)((double)(z*10)/9);
 			try {
 				Event.getProduct().setPrice(z);
 			} catch (PriceException e) {
