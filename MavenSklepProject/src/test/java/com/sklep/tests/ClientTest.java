@@ -82,8 +82,8 @@ public class ClientTest {
 	@Test
 	public void testDeleteManyProductsByCode() throws PriceException, CodeException{
 		
-		c.addProduct(new Product(ProductMarks.Johniee_Walker_Red,(double)11114444));
-		c.addProduct(new Product(ProductMarks.Johniee_Walker_Blue,(double)11114444));
+		c.addProduct(new Product(ProductMarks.Johniee_Walker_Red,(float)11114444));
+		c.addProduct(new Product(ProductMarks.Johniee_Walker_Blue,(float)11114444));
 		c.DeleteManyProductsByCode(11114444);
 		assertTrue(c.products.size()==0);
 		

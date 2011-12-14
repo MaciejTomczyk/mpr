@@ -1,5 +1,6 @@
 package com.sklep.services;
 
+import java.io.IOException;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,9 +8,9 @@ import java.sql.Statement;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import com.sklep.project.Client;
-import com.sklep.project.Product;
 public class ClientDBManager {
 
 	
@@ -23,8 +24,19 @@ public class ClientDBManager {
 	public ClientDBManager() throws java.sql.SQLException, SQLException
 	{
 	
-		conn= DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/workdb");
+		
+			Properties props=new Properties();
+
+			try {
+				props.load(ClassLoader.getSystemResourceAsStream("com/sklep/jdbc.properties"));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		conn= DriverManager.getConnection(props.getProperty("url"),props);
 		boolean clientTableExists=false;
+		
+	
 
 		ResultSet rs= conn.getMetaData().getTables(null, null,null, null);
 		stmt=conn.createStatement();
@@ -72,8 +84,11 @@ public class ClientDBManager {
 			deleteClientStmt=conn.prepareStatement("" +
 					"DELETE FROM Client" +
 					"");
-	
-	
+		
+			
+			
+			
+			
 	
 	
 		}

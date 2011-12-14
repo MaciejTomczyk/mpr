@@ -45,7 +45,7 @@ public class ProductTest {
 	public void testSetPrice() throws PriceException {
 		p.setPrice(55);
 		o.setPrice(55);
-		assertSame(p.getPrice(),o.getPrice());
+		assertTrue(p.getPrice()==o.getPrice());
 	}
 
 
@@ -60,7 +60,7 @@ public class ProductTest {
 	public void testGetPrice() throws PriceException {
 		p.setPrice(55);
 		o.setPrice(55);
-		assertEquals(p.getPrice(),o.getPrice());
+		assertTrue(p.getPrice()==o.getPrice());
 	}
 
 	@Test
