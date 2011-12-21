@@ -2,6 +2,7 @@ package com.sklep.project;
 
 public class Product implements IProduct  {
 	public ProductMarks mark;
+	public String name;
 	public double price;
 	public float code;
 	boolean box;
@@ -19,6 +20,11 @@ public class Product implements IProduct  {
 	
 	
 	
+	public Product(String name, double price) {
+		this.name=name;
+		this.price=price;
+	}
+
 	public void setPrice(double z) throws PriceException {
 		if (z < 0)
 			throw new PriceException("Price cannot be lower than 0");

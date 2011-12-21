@@ -5,9 +5,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.sklep.project.Client;
 import com.sklep.project.Product;
+import com.sklep.project.ProductMarks;
 
 public class ProductDBManager {
 
@@ -16,6 +19,10 @@ public class ProductDBManager {
 	private PreparedStatement addProductStmt;
 	private PreparedStatement getProductStmt;
 	private PreparedStatement dropProductStmt;
+	private PreparedStatement deleteAllProductsStmt;
+	private PreparedStatement findProductByNameStmt;
+	private PreparedStatement findProductByCodeStmt;
+	private PreparedStatement findProductByPriceStmt;
 	
 	
 	
@@ -66,6 +73,13 @@ public class ProductDBManager {
 			"DROP TABLE Product" +
 			"");
 	
+	deleteAllProductsStmt = conn.prepareStatement("DELETE FROM Product");
+	
+	findProductByNameStmt = conn.prepareStatement("SELECT id FROM Product WHERE name = ?");
+	
+	findProductByCodeStmt = conn.prepareStatement("SELECT id FROM Product WHERE code = ?");
+	
+	findProductByPriceStmt = conn.prepareStatement("SELECT id FROM Product WHERE price = ?");
 	
 	}
 	
@@ -86,7 +100,64 @@ public class ProductDBManager {
 	}
 	
 	
+	public List<Integer> findProductByName(String name) throws java.sql.SQLException
+	{
+		try 
+		{
+			List<Integer> result = new ArrayList<Integer>();
+			findProductByNameStmt.setString(1, name);
+			ResultSet rs = findProductByNameStmt.executeQuery();
+			while (rs.next())
+				result.add(rs.getInt("ID"));
+			return result;
+		} 
+		catch (java.sql.SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
+	
+	public List<Integer> findGameByType(float code) throws java.sql.SQLException
+	{
+		try 
+		{
+			List<Integer> result = new ArrayList<Integer>();
+			findProductByCodeStmt.setFloat(1, code);
+			ResultSet rs = findProductByNameStmt.executeQuery();
+			while (rs.next())
+				result.add(rs.getInt("ID"));
+			return result;
+		} 
+		catch (java.sql.SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	
+	public List<Product> getAllGames() throws java.sql.SQLException 
+	{
+		List<Product> products = new ArrayList<Product>();
+		try 
+		{
+			ResultSet rs = getProductStmt.executeQuery();
+			while (rs.next()) 
+			{
+
+
+				products.add(new Product(rs.getString("name"),rs.getDouble("price")));
+			}
+
+		} 
+		catch (java.sql.SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		return products;
+	}
 	
 	
 	
