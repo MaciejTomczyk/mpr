@@ -50,6 +50,10 @@ public class Product implements IProduct  {
 	public ProductMarks getName() {
 		return this.mark;
 	}
+	
+	public  String getName2() {
+		return this.name;
+	}
 
 	public void setBox(){
 		this.box=true;

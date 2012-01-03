@@ -15,7 +15,7 @@ import com.sklep.events.Desk.RollbackProduct;
 import com.sklep.services.ClientDBManager;
 import com.sklep.services.ClientProductDBManager;
 import com.sklep.services.ProductDBManager;
-
+import com.sklep.services.Condition;
 public class Main {
 
 	private static Logger logger = Logger.getLogger(Main.class);
@@ -116,8 +116,13 @@ public class Main {
 		
 		for (Product product : dbClientProduct.getClientProduct(cdb.findClientByName("Maciej Tomczyk")))
 		{
-		System.out.println("Name: " + product.getName().toString() + "\tCode: " + product.getCode() + "\tPrice: " + product.getPrice());
+		System.out.println("Name: " + product.getName2() + "\tCode: " + product.getCode() + "\tPrice: " + product.getPrice());
 		}
+		
+		
+		
+		
+		
 		
 		
 	}
