@@ -100,12 +100,12 @@ public class ProductDBManager {
 	}
 	
 	
-	public List<Integer> findProductByName(String name) throws java.sql.SQLException
+	public List<Integer> findProductByName(ProductMarks mark) throws java.sql.SQLException
 	{
 		try 
 		{
 			List<Integer> result = new ArrayList<Integer>();
-			findProductByNameStmt.setString(1, name);
+			findProductByNameStmt.setString(1, mark.toString());
 			ResultSet rs = findProductByNameStmt.executeQuery();
 			while (rs.next())
 				result.add(rs.getInt("ID"));
@@ -119,7 +119,7 @@ public class ProductDBManager {
 	}
 	
 	
-	public List<Integer> findGameByType(float code) throws java.sql.SQLException
+	public List<Integer> findProductByCode(float code) throws java.sql.SQLException
 	{
 		try 
 		{

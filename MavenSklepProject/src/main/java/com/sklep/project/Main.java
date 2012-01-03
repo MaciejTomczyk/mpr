@@ -13,6 +13,7 @@ import com.sklep.events.Desk.ChangeBoxProduct;
 import com.sklep.events.Desk.PromoteProduct;
 import com.sklep.events.Desk.RollbackProduct;
 import com.sklep.services.ClientDBManager;
+import com.sklep.services.ClientProductDBManager;
 import com.sklep.services.ProductDBManager;
 
 public class Main {
@@ -78,6 +79,7 @@ public class Main {
 		IProductProcesses promote=new PromoteProduct();
 		IProductProcesses rollback=new RollbackProduct();
 		Product z =new Product(ProductMarks.Sheridans,(double)4);
+		Product x =new Product(ProductMarks.Johniee_Walker_Red,(float)5556643);
 		try {
 			z.setCode(11112222);
 		} catch (CodeException e) {
@@ -98,17 +100,25 @@ public class Main {
 		{
 			System.out.println(client.getName());
 		}
-		cdb.clear();
+		//cdb.clear();
 		System.out.println(".....................");
-		for(Client client: cdb.getAllClients())
-		{
-			System.out.println(client.getName());
-		}
-		
-		System.out.println(".....................");
+
 		ProductDBManager pdb= new ProductDBManager();
 		pdb.addProduct(z);
+		pdb.addProduct(x);
+		x.setPrice((double)45);
 		//pdb.droptableproduct();
+		
+		ClientProductDBManager dbClientProduct = new ClientProductDBManager();
+		
+		dbClientProduct.addProductToClient(cdb.findClientByName(c.getName()), pdb.findProductByName(ProductMarks.Sheridans));
+		dbClientProduct.addProductToClient(cdb.findClientByName(d.getName()), pdb.findProductByCode(5556643));
+		
+		for (Product product : dbClientProduct.getClientProduct(cdb.findClientByName("Maciej Tomczyk")))
+		{
+		System.out.println("Name: " + product.getName() + "\tCode: " + product.getCode() + "\tPrice: " + product.getPrice());
+		System.out.println("cos");
+		}
 		
 		
 	}
