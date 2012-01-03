@@ -125,7 +125,7 @@ public class ProductDBManager {
 		{
 			List<Integer> result = new ArrayList<Integer>();
 			findProductByCodeStmt.setFloat(1, code);
-			ResultSet rs = findProductByNameStmt.executeQuery();
+			ResultSet rs = findProductByCodeStmt.executeQuery();
 			while (rs.next())
 				result.add(rs.getInt("ID"));
 			return result;
