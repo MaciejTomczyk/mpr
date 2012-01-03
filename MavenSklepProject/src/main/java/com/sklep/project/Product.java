@@ -30,6 +30,12 @@ public class Product implements IProduct  {
 		this.price=price;
 	}
 
+	public Product(ProductMarks mark, double price, float code) {
+		this.mark=mark;
+		this.code=code;
+		this.price=price;
+	}
+
 	public void setPrice(double z) throws PriceException {
 		if (z < 0)
 			throw new PriceException("Price cannot be lower than 0");

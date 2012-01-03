@@ -116,8 +116,7 @@ public class Main {
 		
 		for (Product product : dbClientProduct.getClientProduct(cdb.findClientByName("Maciej Tomczyk")))
 		{
-		System.out.println("Name: " + product.getName() + "\tCode: " + product.getCode() + "\tPrice: " + product.getPrice());
-		System.out.println("cos");
+		System.out.println("Name: " + product.getName().toString() + "\tCode: " + product.getCode() + "\tPrice: " + product.getPrice());
 		}
 		
 		

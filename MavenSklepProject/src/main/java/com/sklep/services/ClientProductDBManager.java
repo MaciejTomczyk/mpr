@@ -54,7 +54,7 @@ public class ClientProductDBManager {
 					.prepareStatement("DELETE FROM clientProduct");
 
 			getProductClientStmt = conn
-					.prepareStatement("SELECT Product.name,  Product.price,Product.code FROM Product, ClientProduct WHERE client_id = ? and product_id = Product.id");
+					.prepareStatement("SELECT Product.name,Product.price,Product.code FROM Product, ClientProduct WHERE client_id = ? and product_id = Product.id");
 
 		} catch (java.sql.SQLException e) {
 
@@ -110,7 +110,8 @@ public class ClientProductDBManager {
 				ResultSet rs = getProductClientStmt.executeQuery();
 				while (rs.next()) {
 				
-
+							
+					
 					Products.add(new Product(rs.getString("name"), rs
 							.getDouble("price"),rs.getFloat("code")));
 				}
