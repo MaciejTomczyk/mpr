@@ -146,9 +146,8 @@ public class ProductDBManager {
 			ResultSet rs = getProductStmt.executeQuery();
 			while (rs.next()) 
 			{
-
-
-				products.add(new Product(rs.getString("name"),rs.getDouble("price")));
+			
+				products.add(new Product(rs.getString("name"),rs.getDouble("price"),rs.getFloat("code")));
 			}
 
 		} 

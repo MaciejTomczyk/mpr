@@ -19,9 +19,14 @@ public class Product implements IProduct  {
 	}
 	
 	
-	
 	public Product(String name, double price) {
 		this.name=name;
+		this.price=price;
+	}
+
+	public Product(String name, double price, float code) {
+		this.name=name;
+		this.code=code;
 		this.price=price;
 	}
 
