@@ -51,9 +51,10 @@ public class Product implements IProduct  {
 		return this.mark;
 	}
 	
-	public  String getName2() {
-		return this.name;
+	public String getName2() {
+		return name;
 	}
+	
 
 	public void setBox(){
 		this.box=true;

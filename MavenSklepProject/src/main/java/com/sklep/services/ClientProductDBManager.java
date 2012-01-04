@@ -112,8 +112,8 @@ public class ClientProductDBManager {
 				
 							
 					
-					Products.add(new Product(rs.getString("name"), rs
-							.getDouble("price"),rs.getFloat("code")));
+					Products.add(new Product(rs.getString("name"), 
+							rs.getDouble("price"),rs.getFloat("code")));
 				}
 			}
 		} catch (java.sql.SQLException e) {
