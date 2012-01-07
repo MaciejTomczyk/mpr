@@ -1,6 +1,6 @@
 package com.sklep.project;
 
-public class Product implements IProduct  {
+public class Product implements IProduct {
 	public ProductMarks mark;
 	public String name;
 	public double price;
@@ -12,28 +12,27 @@ public class Product implements IProduct  {
 		this.price = price;
 	}
 
-	public Product(ProductMarks mark, float code){
-		this.mark=mark;
-		this.code=code;
-		
+	public Product(ProductMarks mark, float code) {
+		this.mark = mark;
+		this.code = code;
+
 	}
-	
-	
+
 	public Product(String name, double price) {
-		this.name=name;
-		this.price=price;
+		this.name = name;
+		this.price = price;
 	}
 
 	public Product(String name, double price, float code) {
-		this.name=name;
-		this.code=code;
-		this.price=price;
+		this.name = name;
+		this.code = code;
+		this.price = price;
 	}
 
 	public Product(ProductMarks mark, double price, float code) {
-		this.mark=mark;
-		this.code=code;
-		this.price=price;
+		this.mark = mark;
+		this.code = code;
+		this.price = price;
 	}
 
 	public void setPrice(double z) throws PriceException {
@@ -50,33 +49,30 @@ public class Product implements IProduct  {
 	public ProductMarks getName() {
 		return this.mark;
 	}
-	
+
 	public String getName2() {
 		return name;
 	}
-	
 
-	public void setBox(){
-		this.box=true;
-		
+	public void setBox() {
+		this.box = true;
+
 	}
-	
-	public boolean getBox(){
-		return this.box=box;
-		
+
+	public boolean getBox() {
+		return this.box = box;
+
 	}
-	
-	
-	
+
 	public double getPrice() {
 		return price;
 	}
 
-	public void setName(ProductMarks mark){
-	this.mark=mark;
-		}
+	public void setName(ProductMarks mark) {
+		this.mark = mark;
+	}
 
-	public float getCode(){
+	public float getCode() {
 		return this.code;
 	}
 
@@ -87,11 +83,4 @@ public class Product implements IProduct  {
 			this.code = code;
 	}
 
-		
-		
-	}
-
-
-
-
-
+}

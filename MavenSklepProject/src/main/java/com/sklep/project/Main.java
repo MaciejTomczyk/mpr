@@ -20,8 +20,7 @@ public class Main {
 
 	private static Logger logger = Logger.getLogger(Main.class);
 
-	public static void main(String[] args) throws PriceException, SQLException,
-			com.sklep.services.SQLException {
+	public static void main(String[] args) throws PriceException, SQLException {
 
 		PropertyConfigurator.configure("Log4J.properties");
 
@@ -31,7 +30,7 @@ public class Main {
 		c.addProduct(new Product(ProductMarks.Johniee_Walker_Blue, (double) 399));
 		c.addProduct(new Product(ProductMarks.Malibu, (double) 55));
 		c.printProducts();
-		System.out.println(".....................");
+		System.out.println("..........................................");
 		try {
 			c.addProduct(new Product(ProductMarks.Glenfiddich, (double) -5));
 
@@ -39,12 +38,12 @@ public class Main {
 			logger.error(e.getMessage());
 		}
 		c.printProducts();
-		System.out.println(".....................");
+		System.out.println("..........................................");
 		c.addProduct(new Product(ProductMarks.Johniee_Walker_Red, (double) 0));
 		c.checkPrice(c.findProduct(ProductMarks.Johniee_Walker_Red));
 		c.deleteProduct(c.findProduct(ProductMarks.Glenfiddich));
 		c.printProducts();
-		System.out.println(".....................");
+		System.out.println("..........................................");
 
 		Product p = new Product(ProductMarks.Gorzka, (double) 15);
 		try {
@@ -57,7 +56,7 @@ public class Main {
 			logger.warn(e);
 		}
 		System.out.println(p.getName() + " cena: " + p.getPrice());
-		System.out.println(".....................");
+		System.out.println("..........................................");
 
 		Client d = new Client("Tadeusz Tomczyk");
 		d.addProduct(new Product(ProductMarks.Johniee_Walker_Red,
@@ -68,9 +67,9 @@ public class Main {
 		d.DeleteManyProductsByCode(5556643);
 		System.out.println(".....................");
 		d.FindAllProductsByCode(5556643);
-		System.out.println(".....................");
+		System.out.println("..........................................");
 
-		System.out.println(".....................");
+		System.out.println("..........................................");
 		Desk desk = new Desk();
 		IProductProcesses clean = new CleanProduct();
 		IProductProcesses change = new ChangeBoxProduct();
@@ -99,7 +98,7 @@ public class Main {
 			System.out.println(client.getName());
 		}
 		// cdb.clear();
-		System.out.println(".....................");
+		System.out.println("..........................................");
 
 		ProductDBManager pdb = new ProductDBManager();
 		pdb.addProduct(z);
@@ -108,24 +107,24 @@ public class Main {
 
 		ClientProductDBManager dbClientProduct = new ClientProductDBManager();
 
-		dbClientProduct.addProductToClient(cdb.findClientByName(c.getName()),
+		dbClientProduct.addProductToClient(cdb.FindClientByName(c.getName()),
 				pdb.findProductByName(ProductMarks.Sheridans));
-		dbClientProduct.addProductToClient(cdb.findClientByName(d.getName()),
+		dbClientProduct.addProductToClient(cdb.FindClientByName(d.getName()),
 				pdb.findProductByCode(5556643));
-		
-		System.out.println(".....................");
+
+		System.out.println("..........................................");
 		System.out.println("Maciej Tomczyk");
 		for (Product product : dbClientProduct.getClientProduct(cdb
-				.findClientByName("Maciej Tomczyk"))) {
+				.FindClientByName("Maciej Tomczyk"))) {
 			System.out.println("Name: " + product.getName2().toString()
 					+ "\tCode: " + product.getCode() + "\tPrice: "
 					+ product.getPrice());
-			
+
 		}
-		System.out.println(".....................");
+		System.out.println("..........................................");
 		System.out.println("Tadeusz Tomczyk");
 		for (Product product : dbClientProduct.getClientProduct(cdb
-				.findClientByName("Tadeusz Tomczyk"))) {
+				.FindClientByName("Tadeusz Tomczyk"))) {
 			System.out.println("Name: " + product.getName2().toString()
 					+ "\tCode: " + product.getCode() + "\tPrice: "
 					+ product.getPrice());
@@ -142,6 +141,4 @@ public class Main {
 		});
 	}
 
-	
-	//lol
 }

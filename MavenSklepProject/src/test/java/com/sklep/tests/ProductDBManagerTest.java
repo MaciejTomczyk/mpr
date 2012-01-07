@@ -2,13 +2,20 @@ package com.sklep.tests;
 
 import static org.junit.Assert.*;
 
+import java.sql.SQLException;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.sklep.services.*;
+import com.sklep.project.*;
+
 public class ProductDBManagerTest {
+
+	ProductDBManager pdb = new ProductDBManager();
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -17,47 +24,48 @@ public class ProductDBManagerTest {
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
 	}
-
+	
 	@Before
 	public void setUp() throws Exception {
+		
 	}
 
 	@After
 	public void tearDown() throws Exception {
+	pdb.deleteAllProducts();	
 	}
 
 	@Test
-	public void testProductDBManager() {
-		fail("Not yet implemented");
+	public void testAddProduct() throws SQLException  {
+		pdb.addProduct(new Product(ProductMarks.Johniee_Walker_Red,65,12112245));
+		pdb.addProduct(new Product(ProductMarks.Sheridans,47,12357245));
+		assertEquals(2, pdb.getAllProducts().size());
+	
 	}
 
 	@Test
-	public void testAddProduct() {
-		fail("Not yet implemented");
+	public void testGetAllProducts() throws SQLException {
+		pdb.addProduct(new Product(ProductMarks.Johniee_Walker_Red,65,12112245));
+		assertEquals(1, pdb.getAllProducts().size());
+	}
+
+	
+	
+
+	@Test
+	public void testFindProductByName() throws SQLException {
+		pdb.addProduct(new Product(ProductMarks.Johniee_Walker_Red,65,12112245));
+		pdb.addProduct(new Product(ProductMarks.Johniee_Walker_Red,65,12112245));
+		pdb.addProduct(new Product(ProductMarks.Sheridans,47,12357245));
+		assertTrue(pdb.findProductByName(ProductMarks.Sheridans).size() == 1);
 	}
 
 	@Test
-	public void testDroptableproduct() {
-		fail("Not yet implemented");
+	public void testFindProductByCode() throws SQLException {
+		pdb.addProduct(new Product(ProductMarks.Johniee_Walker_Red,65,12112246));
+		assertEquals(1, pdb.findProductByCode(12112246).size());
 	}
 
-	@Test
-	public void testFindProductByName() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testFindGameByType() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetAllGames() {
-		fail("Not yet implemented");
-	}
-
-
-
-
+	
 
 }
