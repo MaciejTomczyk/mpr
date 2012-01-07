@@ -12,16 +12,7 @@ public class Product implements IProduct {
 		this.price = price;
 	}
 
-	public Product(ProductMarks mark, float code) {
-		this.mark = mark;
-		this.code = code;
-
-	}
-
-	public Product(String name, double price) {
-		this.name = name;
-		this.price = price;
-	}
+	
 
 	public Product(String name, double price, float code) {
 		this.name = name;
