@@ -15,7 +15,7 @@ public class ClientProductDBManager {
 	private PreparedStatement deleteAllProductFromClientStmt;
 	private PreparedStatement getProductClientStmt;
 
-	public ClientProductDBManager() throws java.sql.SQLException {
+	public ClientProductDBManager()  {
 		try {
 			Properties props = new Properties();
 
